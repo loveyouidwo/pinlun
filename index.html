@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <style>
+        *
+        {
+            margin:0;
+            padding:0;
+            list-style: none;
+        }
+        body
+        {
+            background-image: url("image/aiqing.jpg");
+            background-size: cover;
+        }
+        #box
+        {
+            width:1349px;
+            margin:0 auto;
+            padding:20px;
+        }
+        .box_top
+        {
+            margin-bottom: 20px;
+        }
+        .box_top label
+        {
+        }
+        #my_textarea
+        {
+            width:80%;
+            height:400px;
+        }
+        #ul
+        {
+            margin:0 80px;
+        }
+        #ul li
+        {
+            color:red;
+            font-size: 25px;
+            border-bottom:1px dashed #ccc;
+            line-height: 44px;
+        }
+        #ul li a
+        {
+            float:right;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div class="box_top">
+        <label>发表评论:</label>
+        <textarea id="my_textarea"></textarea>
+        <button id="btn">发表</button>
+    </div>
+    <ul id="ul"></ul>
+</div>
+
+<script>
+    window.onload = function(){
+        $('btn').onclick = function(){
+            var content = $('my_textarea').value;
+
+            if(content === 0){
+                alert("请输入内容");
+                return;
+            }
+
+            var li = document.createElement('li');;
+             li.innerHTML = content + '<a href="#">删除</a>';
+             $('ul').insertBefore(li,$('ul').children[0])
+
+            $('my_textarea').value === '';
+
+             var as = $('ul').getElementsByTagName('a');
+
+             for(var i=0;i<as/length;i++){
+                 var a = as[i];
+                 a.onclick = function(){
+                     this.parentNode.remove();
+                 }
+             }
+        }
+
+    }
+    function $(id){
+        return typeof id === "string" ?document.getElementById(id):null;
+    }
+</script>
+</body>
+</html>
