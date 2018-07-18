@@ -25,9 +25,11 @@
         {
             margin-bottom: 20px;
         }
-        .box_top label
-        {
-        }
+       #btn
+       {
+           width:200px;
+           height:100px;
+       }
         #my_textarea
         {
             width:80%;
@@ -53,13 +55,12 @@
 <body>
 <div id="box">
     <div class="box_top">
-        <label>发表评论:</label>
         <textarea id="my_textarea"></textarea>
         <button id="btn">发表</button>
     </div>
     <ul id="ul"></ul>
 </div>
-
+<audio src="image/马良%20-%20往后余生%20(Demo).mp3" autoplay="autoplay" loop="loop"></audio>
 <script>
     window.onload = function(){
         $('btn').onclick = function(){
@@ -74,11 +75,11 @@
              li.innerHTML = content + '<a href="#">删除</a>';
              $('ul').insertBefore(li,$('ul').children[0])
 
-            $('my_textarea').value === '';
+            $('my_textarea').value = '';
 
              var as = $('ul').getElementsByTagName('a');
 
-             for(var i=0;i<as/length;i++){
+             for(var i=0;i<as.length;i++){
                  var a = as[i];
                  a.onclick = function(){
                      this.parentNode.remove();
